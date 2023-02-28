@@ -19,8 +19,8 @@ library(googleCloudStorageR)
 function(){return("alive")}
 
 #* Runs STAGE test script
-#* @get /box_transfer_test_api
-#* @post /box_transfer_test_api
+#* @get /box-transfer-test-api
+#* @post /box-transfer-test-api
 function() {
 
   # Set parameters 

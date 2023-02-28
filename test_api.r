@@ -63,7 +63,7 @@ function() {
   gcs_upload(report_name, bucket=bucket, name=report_name) 
   
   # Return a string for for API testing purposes
-  ret_str <- paste("All done. Check", bucket, "for", report_fid)
+  ret_str <- paste("All done. Check", bucket, "for", report_name)
   print(ret_str)
   return(ret_str) 
 }

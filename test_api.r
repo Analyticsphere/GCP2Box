@@ -40,15 +40,21 @@ function() {
   # Download some data
   rec_table <- bq_project_query(project, query_rec)
   rec_data  <- bq_table_download(rec_table, bigint = "integer64")
+  ages      <- as.numeric(rec_data$Age)
   
   # Write a table to pdf as an example "report". 
-  pdf(report_name)   # Opens a PDF
-  hist(rec_data$Age) # Write histogram to PDF
-  dev.off()          # Closes PDF
+  pdf(report_name)   # Open PDF
+  hist(ages)         # Write histogram to PDF
+  dev.off()          # Close PDF
   
-  # TODO: Authenticate with Box and write report pdf to Box folder 
-  boxr::box_auth_service(token_file = NULL, token_text = NULL)
-  boxr::box_write(object, file_name, dir_id = box_getwd(), description = NULL)
+  # TODO: Authenticate with Box and write report pdf to Box folder. 
+  #       Must get token from GCP Cloud Secret Manager.
+  #       Refs:
+  #       (1) https://cloud.google.com/secret-manager/docs/create-secret-quickstart#secretmanager-quickstart-gcloud
+  #       (2) https://cran.r-project.org/web/packages/googleCloudRunner/googleCloudRunner.pdf
+  
+  # boxr::box_auth_service(token_file = NULL, token_text = NULL)
+  # boxr::box_write(object, file_name, dir_id = box_getwd(), description = NULL)
  
   # Authenticate with Google Storage and write report file to bucket
   scope <- c("https://www.googleapis.com/auth/cloud-platform")

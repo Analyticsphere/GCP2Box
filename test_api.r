@@ -10,7 +10,7 @@
  
 library(bigrquery)
 library(plumber)
-library(boxr)
+#library(boxr)
 library(googleCloudStorageR)
 
 #* heartbeat...for testing purposes only. Not required to run analysis.

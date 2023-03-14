@@ -1,7 +1,10 @@
 # Dockerfile
 
 FROM rocker/tidyverse:latest
-RUN install2.r plumber bigrquery boxr googleCloudStorageR
+RUN install2.r plumber bigrquery boxr googleCloudStorageR devtools
+
+# Install daniels Google Secret Manager R package using devtools 
+RUN R -e "devtools::install_github('episphere/gsecretR')"
 
 # Copy R code to directory in instance
 COPY ["./test_api.r", "./test_api.r"]
